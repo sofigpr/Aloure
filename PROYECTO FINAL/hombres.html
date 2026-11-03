@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ALOURÉ MEN | Activewear</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --negro: #191b19;
+    --gris: #777b74;
+    --olivo: #626b58;
+    --beige: #e8e4dc;
+    --arena: #d6cbb9;
+    --blanco: #ffffff;
+    --fondo: #f7f6f2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--negro);
+    background: var(--blanco);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* BARRA SUPERIOR */
+
+.announcement {
+    background: var(--negro);
+    color: white;
+    text-align: center;
+    padding: 9px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* HEADER */
+
+header {
+    height: 85px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eeeeea;
+}
+
+.header-icon {
+    border: none;
+    background: none;
+    font-size: 23px;
+    cursor: pointer;
+    color: var(--negro);
+    margin-right: 18px;
+}
+
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    letter-spacing: 5px;
+    font-weight: 500;
+}
+
+.logo-sub {
+    font-size: 8px;
+    letter-spacing: 4px;
+    margin-top: -4px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.cart-count {
+    background: var(--olivo);
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    padding: 3px 7px;
+    position: relative;
+    top: -12px;
+    left: -8px;
+}
+
+/* MENU LATERAL */
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 320px;
+    max-width: 85%;
+    height: 100vh;
+    background: white;
+    z-index: 2000;
+    padding: 35px;
+    transition: .4s;
+    overflow-y: auto;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.close-menu {
+    border: none;
+    background: none;
+    font-size: 25px;
+    float: right;
+    cursor: pointer;
+}
+
+.menu-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    margin: 40px 0 25px;
+}
+
+.side-menu > a:not(.women-link) {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid #eeeeea;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.women-link {
+    display: block;
+    padding: 15px;
+    margin: 15px 0 28px;
+    background: var(--beige);
+    color: var(--negro);
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+    border: 1px solid var(--arena);
+    transition: .3s;
+}
+
+.women-link:hover {
+    background: var(--negro);
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 1500;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* BUSCADOR */
+
+.search-box {
+    display: none;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 25px 8%;
+    box-shadow: 0 10px 20px rgba(0,0,0,.08);
+    z-index: 1001;
+}
+
+.search-box.active {
+    display: block;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    padding: 12px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.search-result {
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.search-result img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 650px;
+    background:
+    linear-gradient(rgba(0,0,0,.24), rgba(0,0,0,.35)),
+    url(men.img);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 8%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero-small {
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 75px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 430px;
+    margin-bottom: 30px;
+}
+
+.btn-dark-custom {
+    display: inline-block;
+    padding: 15px 32px;
+    background: white;
+    color: var(--negro);
+    font-size: 10px;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.btn-dark-custom:hover {
+    background: var(--olivo);
+    color: white;
+}
+
+/* BENEFICIOS */
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 30px 5%;
+    background: var(--fondo);
+    text-align: center;
+    gap: 20px;
+}
+
+.benefit {
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.benefit i {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: var(--olivo);
+}
+
+/* TITULOS */
+
+.section-title {
+    text-align: center;
+    padding: 75px 20px 35px;
+}
+
+.section-title small {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--olivo);
+}
+
+.section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    margin-top: 12px;
+}
+
+/* PRODUCTOS */
+
+.products {
+    padding: 10px 6% 75px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.product-card {
+    background: white;
+    position: relative;
+}
+
+.product-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: .4s;
+}
+
+.product-image {
+    overflow: hidden;
+    background: var(--fondo);
+}
+
+.product-card:hover img {
+    transform: scale(1.04);
+}
+
+.product-info {
+    padding: 17px 3px;
+}
+
+.product-info h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.product-info p {
+    color: var(--gris);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.add-button {
+    width: 100%;
+    border: 1px solid var(--negro);
+    background: white;
+    color: var(--negro);
+    padding: 12px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    transition: .3s;
+}
+
+.add-button:hover {
+    background: var(--negro);
+    color: white;
+}
+
+/* ETIQUETAS */
+
+.tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--olivo);
+    color: white;
+    padding: 7px 10px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* CATEGORIAS */
+
+.categories {
+    padding: 30px 6% 80px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    height: 430px;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,.55));
+    display: flex;
+    align-items: end;
+    padding: 30px;
+    color: white;
+}
+
+.category-overlay h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+}
+
+/* EDITORIAL */
+
+.editorial {
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--fondo);
+}
+
+.editorial img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+}
+
+.editorial-content {
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.editorial-content small {
+    color: var(--olivo);
+    letter-spacing: 3px;
+    font-size: 10px;
+}
+
+.editorial-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    margin: 20px 0;
+}
+
+.editorial-content p {
+    font-size: 13px;
+    line-height: 2;
+    color: var(--gris);
+}
+
+.editorial-button {
+    background: var(--negro);
+    color: white;
+    padding: 15px 25px;
+    display: inline-block;
+    width: fit-content;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.editorial-button:hover {
+    background: var(--olivo);
+    color: white;
+}
+
+/* RESEÑAS */
+
+.reviews {
+    padding: 65px 6%;
+    background: white;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    text-align: center;
+}
+
+.review-card {
+    padding: 20px;
+}
+
+.review-card img {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.review-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.stars {
+    color: #b69a61;
+    letter-spacing: 3px;
+    margin: 10px 0;
+}
+
+.review-card p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--gris);
+}
+
+/* NEWSLETTER */
+
+.newsletter {
+    background: var(--beige);
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.newsletter h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+}
+
+.newsletter p {
+    font-size: 12px;
+    margin: 15px 0 25px;
+}
+
+.newsletter form {
+    display: flex;
+    max-width: 420px;
+    margin: auto;
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 13px;
+    border: 1px solid #c9c2b7;
+    background: white;
+    outline: none;
+    font-size: 12px;
+}
+
+.newsletter button {
+    background: var(--negro);
+    color: white;
+    border: none;
+    padding: 0 22px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--negro);
+    color: white;
+    padding: 55px 7% 25px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 35px;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    letter-spacing: 4px;
+}
+
+.footer-description {
+    color: #b9b9b2;
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 260px;
+    margin-top: 15px;
+}
+
+footer h4 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+footer a {
+    display: block;
+    color: #c5c5bf;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+footer a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444640;
+    margin-top: 45px;
+    padding-top: 20px;
+    text-align: center;
+    color: #aaa;
+    font-size: 10px;
+}
+
+/* CARRITO */
+
+.cart-panel {
+    position: fixed;
+    right: -450px;
+    top: 0;
+    width: 400px;
+    max-width: 90%;
+    height: 100vh;
+    background: white;
+    z-index: 2001;
+    padding: 30px;
+    transition: .4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.cart-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h4 {
+    font-size: 12px;
+}
+
+.cart-item-info p {
+    font-size: 12px;
+    color: var(--gris);
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.quantity-controls button {
+    border: 1px solid #ddd;
+    background: white;
+    width: 25px;
+    height: 25px;
+}
+
+.remove-button {
+    border: none;
+    background: none;
+    color: #777;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+.cart-footer {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 15px;
+    background: var(--negro);
+    color: white;
+    border: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* NOTIFICACION */
+
+.toast-message {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--negro);
+    color: white;
+    padding: 15px 22px;
+    font-size: 12px;
+    z-index: 3000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .3s;
+    pointer-events: none;
+}
+
+.toast-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .editorial-content {
+        padding: 35px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        height: 70px;
+        padding: 0 5%;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .hero {
+        min-height: 550px;
+        background-position: center;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .benefits {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 25px 10px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .product-card img {
+        height: 230px;
+    }
+
+    .product-info h3 {
+        font-size: 11px;
+    }
+
+    .add-button {
+        padding: 10px 5px;
+        font-size: 9px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card {
+        height: 350px;
+    }
+
+    .editorial {
+        grid-template-columns: 1fr;
+    }
+
+    .editorial img {
+        height: 350px;
+    }
+
+    .editorial-content {
+        padding: 40px 25px;
+    }
+
+    .review-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .review-card {
+        padding: 10px;
+    }
+
+    .review-card p {
+        font-size: 11px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+
+    .search-results {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .newsletter form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .newsletter button {
+        padding: 14px;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BARRA SUPERIOR -->
+
+<div class="announcement">
+    ENVÍO GRATIS EN PEDIDOS SUPERIORES A $2,000 MXN
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+    <div>
+        <button class="header-icon" onclick="openMenu()">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+
+    <div class="header-center">
+        <div class="logo">ALOURÉ</div>
+        <div class="logo-sub">MEN · SPORTSWEAR</div>
+    </div>
+
+    <div class="header-right">
+
+        <button class="header-icon" onclick="toggleSearch()">
+            <i class="bi bi-search"></i>
+        </button>
+
+        <button class="header-icon" onclick="openCart()">
+    <i class="bi bi-bag"></i>
+    <span class="cart-count" id="cartCount">0</span>
+</button>
+
+    </div>
+
+</header>
+
+<!-- BUSCADOR -->
+
+<div class="search-box" id="searchBox">
+
+    <input
+        type="text"
+        class="search-input"
+        id="searchInput"
+        placeholder="¿Qué estás buscando?"
+        oninput="searchProducts()"
+    >
+
+    <div class="search-results" id="searchResults"></div>
+
+</div>
+
+<!-- MENU LATERAL -->
+
+<nav class="side-menu" id="sideMenu">
+
+    <button class="close-menu" onclick="closeMenu()">
+        <i class="bi bi-x-lg"></i>
+    </button>
+
+    <h2 class="menu-title">Explora ALOURÉ</h2>
+
+    <a href="index.html" class="women-link">
+        EXPLORA NUESTRA COLECCIÓN DE MUJERES ↗
+    </a>
+
+    <a href="#novedades" onclick="closeMenu()">Novedades</a>
+    <a href="#coleccion" onclick="closeMenu()">Colección</a>
+    <a href="#shorts" onclick="closeMenu()">Shorts</a>
+    <a href="#playeras" onclick="closeMenu()">Playeras</a>
+    <a href="#joggers" onclick="closeMenu()">Joggers</a>
+    <a href="#conjuntos" onclick="closeMenu()">Conjuntos</a>
+    <a href="#accesorios" onclick="closeMenu()">Accesorios</a>
+
+</nav>
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            ALOURÉ MEN · COLLECTION 2026
+        </div>
+
+        <h1>Supera tus propios límites.</h1>
+
+        <p>
+            Diseñado para acompañar cada movimiento.
+            Descubre prendas que combinan comodidad,
+            rendimiento y estilo dentro y fuera del entrenamiento.
+        </p>
+
+        <a href="#novedades" class="btn-dark-custom">
+            DESCUBRIR COLECCIÓN
+        </a>
+
+    </div>
+
+</section>
+
+<!-- BENEFICIOS -->
+
+<section class="benefits">
+
+    <div class="benefit">
+        <i class="bi bi-truck"></i>
+        Envíos a todo México
+    </div>
+
+    <div class="benefit">
+        <i class="bi bi-award"></i>
+        Calidad premium
+    </div>
+
+    <div class="benefit">
+        <i class="bi bi-arrow-repeat"></i>
+        Cambios sencillos
+    </div>
+
+    <div class="benefit">
+        <i class="bi bi-lightning"></i>
+        Diseñado para moverte
+    </div>
+
+</section>
+
+<!-- NOVEDADES -->
+
+<section id="novedades">
+
+    <div class="section-title">
+
+        <small>DESCUBRE LO NUEVO</small>
+
+        <h2>Últimas novedades</h2>
+
+    </div>
+
+    <div class="products">
+
+        <div class="product-grid">
+
+            <div class="product-card">
+
+                <span class="tag">BEST SELLER</span>
+
+                <div class="product-image">
+                    <img src="short.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Short Training Core</h3>
+                    <p>Short deportivo · Negro</p>
+                    <div class="price">$890 MXN</div>
+
+                    <button class="add-button" onclick="addToCart(1)">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <span class="tag">NUEVO</span>
+
+                <div class="product-image">
+                    <img src="playera.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Playera Essential</h3>
+                    <p>Playera deportiva · Gris</p>
+                    <div class="price">$790 MXN</div>
+
+                    <button class="add-button" onclick="addToCart(2)">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="jogger.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Jogger Performance</h3>
+                    <p>Jogger deportivo · Olivo</p>
+                    <div class="price">$1,290 MXN</div>
+
+                    <button class="add-button" onclick="addToCart(3)">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <span class="tag">NUEVO</span>
+
+                <div class="product-image">
+                    <img src="sudadera.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Sudadera Movement</h3>
+                    <p>Sudadera premium · Arena</p>
+                    <div class="price">$1,490 MXN</div>
+
+                    <button class="add-button" onclick="addToCart(4)">
+                        AGREGAR AL CARRITO
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CATEGORIAS -->
+
+<section id="coleccion">
+
+    <div class="section-title">
+
+        <small>ENCUENTRA TU ESTILO</small>
+
+        <h2>Explora por categoría</h2>
+
+    </div>
+
+    <div class="categories">
+
+        <div class="category-grid">
+
+            <a href="#shorts" class="category-card">
+
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85">
+
+                <div class="category-overlay">
+                    <h3>Shorts</h3>
+                </div>
+
+            </a>
+
+            <a href="#playeras" class="category-card">
+
+                <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85">
+
+                <div class="category-overlay">
+                    <h3>Playeras</h3>
+                </div>
+
+            </a>
+
+            <a href="#conjuntos" class="category-card">
+
+                <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=900&q=85">
+
+                <div class="category-overlay">
+                    <h3>Accesorios</h3>
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EDITORIAL -->
+
+<section class="editorial">
+
+    <img src="performance.img">
+
+    <div class="editorial-content">
+
+        <small>ALOURÉ MEN · PERFORMANCE</small>
+
+        <h2>Tu movimiento, tu ritmo.</h2>
+
+        <p>
+            Cada entrenamiento es una oportunidad para llegar
+            más lejos. Encuentra prendas creadas para ofrecer
+            libertad de movimiento, comodidad y un estilo que
+            se adapta a tu día.
+        </p>
+
+        <a href="#conjuntos" class="editorial-button">
+            DESCUBRIR CONJUNTOS
+        </a>
+
+    </div>
+
+</section>
+
+<!-- SHORTS -->
+
+<section id="shorts">
+
+    <div class="section-title">
+
+        <small>LIBERTAD EN CADA MOVIMIENTO</small>
+
+        <h2>Shorts deportivos</h2>
+
+    </div>
+
+    <div class="products">
+
+        <div class="product-grid">
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="short.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Short Training Core</h3>
+                    <p>Negro · Entrenamiento</p>
+                    <div class="price">$890 MXN</div>
+                    <button class="add-button" onclick="addToCart(1)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="shortactive.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Short Active Flex</h3>
+                    <p>Gris · Running</p>
+                    <div class="price">$950 MXN</div>
+                    <button class="add-button" onclick="addToCart(5)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="shortessential.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Short Essential</h3>
+                    <p>Olivo · Casual deportivo</p>
+                    <div class="price">$850 MXN</div>
+                    <button class="add-button" onclick="addToCart(6)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="shortperformance.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Short Performance</h3>
+                    <p>Negro · Training</p>
+                    <div class="price">$990 MXN</div>
+                    <button class="add-button" onclick="addToCart(7)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PLAYERAS -->
+
+<section id="playeras">
+
+    <div class="section-title">
+
+        <small>COMODIDAD Y RENDIMIENTO</small>
+
+        <h2>Playeras</h2>
+
+    </div>
+
+    <div class="products">
+
+        <div class="product-grid">
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="playera.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Playera Essential</h3>
+                    <p>Gris · Regular fit</p>
+                    <div class="price">$790 MXN</div>
+                    <button class="add-button" onclick="addToCart(2)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="playeraminimal.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Playera Minimal</h3>
+                    <p>Blanco · Essential</p>
+                    <div class="price">$750 MXN</div>
+                    <button class="add-button" onclick="addToCart(8)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="playeratraining.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Playera Training Pro</h3>
+                    <p>Negro · Performance</p>
+                    <div class="price">$890 MXN</div>
+                    <button class="add-button" onclick="addToCart(9)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="playeralarga.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Playera Longsleeve</h3>
+                    <p>Beige · Relaxed fit</p>
+                    <div class="price">$950 MXN</div>
+                    <button class="add-button" onclick="addToCart(10)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ACCESORIOS -->
+
+<section id="accesorios">
+
+    <div class="section-title">
+
+        <small>LOS DETALLES HACEN LA DIFERENCIA</small>
+
+        <h2>Accesorios</h2>
+
+    </div>
+
+    <div class="products">
+
+        <div class="product-grid">
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="bagg.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Training Bag</h3>
+                    <p>Bolsa deportiva · Negro</p>
+                    <div class="price">$990 MXN</div>
+                    <button class="add-button" onclick="addToCart(18)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85">
+                </div>
+
+                <div class="product-info">
+                    <h3>Sport Watch</h3>
+                    <p>Accesorio deportivo</p>
+                    <div class="price">$1,250 MXN</div>
+                    <button class="add-button" onclick="addToCart(19)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="tapete.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Training Mat</h3>
+                    <p>Tapete deportivo · Olivo</p>
+                    <div class="price">$850 MXN</div>
+                    <button class="add-button" onclick="addToCart(20)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="bottle.img">
+                </div>
+
+                <div class="product-info">
+                    <h3>Sport Bottle</h3>
+                    <p>Termo deportivo · Negro</p>
+                    <div class="price">$490 MXN</div>
+                    <button class="add-button" onclick="addToCart(21)">AGREGAR AL CARRITO</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- RESEÑAS -->
+
+<section class="reviews">
+
+    <div class="section-title">
+
+        <small>LA EXPERIENCIA ALOURÉ</small>
+
+        <h2>Lo que dicen de nosotros</h2>
+
+    </div>
+
+    <div class="review-grid">
+
+        <div class="review-card">
+
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=85">
+
+            <h4>Daniel R.</h4>
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Excelente calidad y comodidad. La ropa se siente
+                increíble para entrenar.
+            </p>
+
+        </div>
+
+        <div class="review-card">
+
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=85">
+
+            <h4>Andrés M.</h4>
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Me encantó el diseño minimalista. Los conjuntos
+                son perfectos para el gimnasio.
+            </p>
+
+        </div>
+
+        <div class="review-card">
+
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=85">
+
+            <h4>Diego C.</h4>
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Las prendas son muy cómodas y tienen un estilo
+                que puedes usar todos los días.
+            </p>
+
+        </div>
+
+        <div class="review-card">
+
+            <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&w=200&q=85">
+
+            <h4>Marco L.</h4>
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Muy buena experiencia de compra. Sin duda
+                volvería a pedir otra colección.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+    <h2>Un poquito de ALOURÉ en tu correo.</h2>
+
+    <p>
+        Descubre nuevas colecciones, lanzamientos y novedades.
+    </p>
+
+    <form id="newsletterForm">
+
+        <input
+            type="email"
+            placeholder="Tu correo electrónico"
+            required
+        >
+
+        <button type="submit">SUSCRIBIRME</button>
+
+    </form>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="footer-logo">ALOURÉ</div>
+
+            <p class="footer-description">
+                Activewear diseñado para acompañarte en cada
+                movimiento. Encuentra tu estilo, supera tus
+                límites y muévete a tu manera.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h4>EXPLORAR</h4>
+
+            <a href="#novedades">Novedades</a>
+            <a href="#shorts">Shorts</a>
+            <a href="#playeras">Playeras</a>
+            <a href="#joggers">Joggers</a>
+            <a href="#conjuntos">Conjuntos</a>
+
+        </div>
+
+        <div>
+
+            <h4>AYUDA</h4>
+
+            <a href="#">Envíos</a>
+            <a href="#">Cambios y devoluciones</a>
+            <a href="#">Preguntas frecuentes</a>
+            <a href="#">Contacto</a>
+
+        </div>
+
+        <div>
+
+            <h4>SÍGUENOS</h4>
+
+            <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="#"><i class="bi bi-facebook"></i> Facebook</a>
+            <a href="#"><i class="bi bi-tiktok"></i> TikTok</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 ALOURÉ MEN. TODOS LOS DERECHOS RESERVADOS.
+    </div>
+
+</footer>
+
+<!-- CARRITO -->
+
+<div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+
+        <h3>Tu carrito</h3>
+
+        <button class="header-icon" onclick="closeCart()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+            <span>Subtotal</span>
+            <span id="cartTotal">$0 MXN</span>
+        </div>
+
+        <button class="checkout-button" onclick="checkout()">
+            CONTINUAR CON LA COMPRA
+        </button>
+
+    </div>
+
+</div>
+
+<!-- NOTIFICACION -->
+
+<div class="toast-message" id="toastMessage">
+    Producto agregado al carrito
+</div>
+
+<script>
+
+// PRODUCTOS
+
+const products = [
+
+    {id:1, name:"Short Training Core", price:890, image:"short.img"},
+    {id:2, name:"Playera Essential", price:790, image:"playera.img"},
+    {id:3, name:"Jogger Performance", price:1290, image:"jogger.img"},
+    {id:4, name:"Sudadera Movement", price:1490, image:"sudadera.img"},
+    {id:5, name:"Short Active Flex", price:950, image:"shortactive.img"},
+    {id:6, name:"Short Essential", price:850, image:"shortessential.img"},
+    {id:7, name:"Short Performance", price:990, image:"shortperformance.img"},
+    {id:8, name:"Playera Minimal", price:750, image:"playeraminimal.img"},
+    {id:9, name:"Playera Training Pro", price:890, image:"playeratrainingpro.img"},
+    {id:10, name:"Playera Oversize", price:950, image:"playeraoversize.img"},
+    {id:11, name:"Pant Movement", price:1350, image:"pantmovement.img"},
+    {id:12, name:"Jogger Essential", price:1190, image:"joggeressential.img"},
+    {id:13, name:"Pant Relax", price:1390, image:"pantrelax.img"},
+    {id:14, name:"Set Training Core", price:1590, image:"settrainingcore.img"},
+    {id:15, name:"Set Active", price:1650, image:"setactive.img"},
+    {id:16, name:"Set Performance", price:2450, image:"setperformance.img"},
+    {id:17, name:"Set Comfort", price:2590, image:"setcomfort.img"},
+    {id:18, name:"Training Bag", price:990, image:"trainingbag.img"},
+    {id:19, name:"Sport Watch", price:1250, image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85"},
+    {id:20, name:"Training Mat", price:850, image:"trainingmat.img"},
+    {id:21, name:"Sport Bottle", price:490, image:"sportbottle.img"}
+
+];
+
+// CARRITO
+
+let cart = JSON.parse(localStorage.getItem("aloureMenCart")) || [];
+
+function formatPrice(price) {
+    return price.toLocaleString("es-MX", {
+        style: "currency",
+        currency: "MXN",
+        maximumFractionDigits: 0
+    });
+}
+
+// AGREGAR PRODUCTOS
+
+function addToCart(id) {
+
+    const product = products.find(p => p.id === id);
+
+    const existing = cart.find(p => p.id === id);
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({
+            ...product,
+            quantity: 1
+        });
+    }
+
+    renderCart();
+    showToast("Producto agregado al carrito");
+}
+
+// MOSTRAR CARRITO
+
+function renderCart() {
+
+    const cartItems = document.getElementById("cartItems");
+
+    let total = 0;
+    let count = 0;
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <p style="text-align:center; padding:50px 10px; color:#777;">
+                Tu carrito está vacío.
+                <br><br>
+                ¡Descubre nuestra colección!
+            </p>
+        `;
+
+    } else {
+
+        cartItems.innerHTML = cart.map(item => {
+
+            total += item.price * item.quantity;
+            count += item.quantity;
+
+            return `
+
+                <div class="cart-item">
+
+                    <img src="${item.image}" alt="${item.name}">
+
+                    <div class="cart-item-info">
+
+                        <h4>${item.name}</h4>
+
+                        <p>${formatPrice(item.price)}</p>
+
+                        <div class="quantity-controls">
+
+                            <button onclick="changeQuantity(${item.id}, -1)">-</button>
+
+                            <span>${item.quantity}</span>
+
+                            <button onclick="changeQuantity(${item.id}, 1)">+</button>
+
+                        </div>
+
+                        <button class="remove-button" onclick="removeFromCart(${item.id})">
+                            Eliminar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+    }
+
+    document.getElementById("cartTotal").textContent = formatPrice(total);
+    document.getElementById("cartCount").textContent = count;
+
+    localStorage.setItem("aloureMenCart", JSON.stringify(cart));
+
+}
+
+// CAMBIAR CANTIDAD
+
+function changeQuantity(id, amount) {
+
+    const item = cart.find(p => p.id === id);
+
+    if (!item) return;
+
+    item.quantity += amount;
+
+    if (item.quantity <= 0) {
+        cart = cart.filter(p => p.id !== id);
+    }
+
+    renderCart();
+
+}
+
+// ELIMINAR PRODUCTO
+
+function removeFromCart(id) {
+
+    cart = cart.filter(p => p.id !== id);
+
+    renderCart();
+
+    showToast("Producto eliminado");
+
+}
+
+// ABRIR CARRITO
+
+function openCart() {
+
+    document.getElementById("cartPanel").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+
+}
+
+// CERRAR CARRITO
+
+function closeCart() {
+
+    document.getElementById("cartPanel").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+
+}
+
+// MENU
+
+function openMenu() {
+
+    document.getElementById("sideMenu").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+
+}
+
+function closeMenu() {
+
+    document.getElementById("sideMenu").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+
+}
+
+// CERRAR ELEMENTOS
+
+function closeAll() {
+
+    closeMenu();
+    closeCart();
+
+}
+
+// BUSCADOR
+
+function toggleSearch() {
+
+    document.getElementById("searchBox").classList.toggle("active");
+
+    document.getElementById("searchInput").focus();
+
+}
+
+function searchProducts() {
+
+    const input = document.getElementById("searchInput").value.toLowerCase();
+
+    const results = document.getElementById("searchResults");
+
+    const filtered = products.filter(product =>
+        product.name.toLowerCase().includes(input)
+    );
+
+    if (input.trim() === "") {
+
+        results.innerHTML = "";
+        return;
+
+    }
+
+    if (filtered.length === 0) {
+
+        results.innerHTML = "<p>No encontramos productos.</p>";
+        return;
+
+    }
+
+    results.innerHTML = filtered.map(product => `
+
+        <div class="search-result" onclick="addToCart(${product.id}); toggleSearch();">
+
+            <img src="${product.image}" alt="${product.name}">
+
+            <p>${product.name}</p>
+
+            <strong>${formatPrice(product.price)}</strong>
+
+        </div>
+
+    `).join("");
+
+}
+
+// NOTIFICACIONES
+
+function showToast(message) {
+
+    const toast = document.getElementById("toastMessage");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+
+}
+
+// NEWSLETTER
+
+document.getElementById("newsletterForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    showToast("¡Gracias por suscribirte a ALOURÉ!");
+
+    this.reset();
+
+});
+
+// CHECKOUT
+
+function checkout() {
+    if (cart.length === 0) {
+        alert("Tu bolsa está vacía.");
+        return;
+    }
+
+    localStorage.setItem("aloureMenCart", JSON.stringify(cart));
+    window.location.href = "pago-hombres.html";
+}
+
+// INICIAR
+
+renderCart();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

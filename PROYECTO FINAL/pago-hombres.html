@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar compra | ALOURÉ Men</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #191b19;
+            --gray: #777a73;
+            --olive: #626b58;
+            --beige: #eae6de;
+            --light: #f7f6f2;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--light);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .announcement {
+            background: var(--black);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        header {
+            background: white;
+            padding: 22px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--black);
+            text-align: center;
+            line-height: 1;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 29px;
+            letter-spacing: 5px;
+            margin: 0;
+        }
+
+        .logo span {
+            font-size: 9px;
+            letter-spacing: 4px;
+        }
+
+        .back-link {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .back-link:hover {
+            color: var(--olive);
+        }
+
+        .page-title {
+            text-align: center;
+            padding: 45px 20px 30px;
+        }
+
+        .page-title p {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--olive);
+            margin-bottom: 12px;
+        }
+
+        .page-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 500;
+        }
+
+        .checkout-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 10px 25px 70px;
+        }
+
+        .checkout-card {
+            background: white;
+            padding: 35px;
+            border: 1px solid #e9e7e1;
+            margin-bottom: 22px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 23px;
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-size: 11px;
+            letter-spacing: .5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #deded8;
+            border-radius: 0;
+            padding: 13px;
+            font-size: 13px;
+            background: #fff;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--olive);
+            box-shadow: 0 0 0 2px rgba(98, 107, 88, .12);
+        }
+
+        .payment-option {
+            border: 1px solid #deded8;
+            padding: 17px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .payment-option:has(input:checked) {
+            border-color: var(--olive);
+            background: #f7f8f4;
+        }
+
+        .payment-option input {
+            accent-color: var(--olive);
+        }
+
+        .payment-icons {
+            margin-left: auto;
+            color: #777;
+            font-size: 20px;
+        }
+
+        .secure-box {
+            background: #f2f4ef;
+            padding: 17px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-top: 22px;
+            color: var(--olive);
+        }
+
+        .secure-box i {
+            font-size: 24px;
+        }
+
+        .secure-box strong {
+            font-size: 12px;
+            display: block;
+        }
+
+        .secure-box small {
+            font-size: 10px;
+            color: #777;
+        }
+
+        .order-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item img {
+            width: 82px;
+            height: 100px;
+            object-fit: cover;
+            background: var(--beige);
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h6 {
+            font-size: 12px;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .item-info p {
+            color: #777;
+            font-size: 11px;
+            margin: 4px 0;
+        }
+
+        .item-price {
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin: 17px 0;
+            color: #666;
+        }
+
+        .summary-total {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .checkout-button {
+            width: 100%;
+            border: none;
+            background: var(--black);
+            color: white;
+            padding: 17px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-top: 25px;
+            transition: .3s;
+        }
+
+        .checkout-button:hover {
+            background: var(--olive);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        .empty-cart i {
+            font-size: 35px;
+            color: #999;
+        }
+
+        .empty-cart p {
+            font-size: 13px;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        .empty-cart a {
+            display: inline-block;
+            background: var(--black);
+            color: white;
+            padding: 13px 22px;
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        footer {
+            background: var(--black);
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .success-message {
+            display: none;
+            background: #edf4eb;
+            color: #42613d;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .page-title h2 {
+                font-size: 30px;
+            }
+
+            .checkout-container {
+                padding: 10px 15px 45px;
+            }
+
+            .checkout-card {
+                padding: 23px 18px;
+            }
+
+            .order-summary {
+                margin-top: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 23px;
+            }
+
+            .back-link {
+                font-size: 10px;
+            }
+
+            .page-title h2 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement">
+        ENVÍO GRATIS EN PEDIDOS SUPERIORES A $1,500 MXN
+    </div>
+
+    <header>
+        <a href="hombres.html" class="back-link">
+            <i class="bi bi-arrow-left"></i> VOLVER A LA TIENDA
+        </a>
+
+        <a href="hombres.html" class="logo">
+            <h1>ALOURÉ</h1>
+            <span>MEN · SPORTSWEAR</span>
+        </a>
+
+        <div style="font-size:20px;">
+            <i class="bi bi-bag-check"></i>
+        </div>
+    </header>
+
+    <section class="page-title">
+        <p>ALOURÉ MEN · CHECKOUT</p>
+        <h2>Finaliza tu compra</h2>
+    </section>
+
+    <main class="checkout-container">
+
+        <div class="row g-4">
+
+            <!-- FORMULARIO -->
+            <div class="col-lg-7">
+
+                <div class="checkout-card">
+
+                    <h3 class="section-title">Información de contacto</h3>
+
+                    <form id="checkoutForm">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Tu nombre" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" placeholder="Tus apellidos" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" placeholder="correo@ejemplo.com" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" placeholder="10 dígitos" pattern="[0-9]{10}" maxlength="10" required>
+                            </div>
+
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h3 class="section-title">Dirección de envío</h3>
+
+                        <div class="row g-3">
+
+                            <div class="col-12">
+                                <label class="form-label">Calle y número</label>
+                                <input type="text" class="form-control" placeholder="Calle, número exterior e interior" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" placeholder="Ciudad" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Estado</label>
+                                <input type="text" class="form-control" placeholder="Estado" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Código postal</label>
+                                <input type="text" class="form-control" placeholder="Código postal" pattern="[0-9]{5}" maxlength="5" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">País</label>
+                                <select class="form-select" required>
+                                    <option value="México" selected>México</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h3 class="section-title">Método de pago</h3>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="Tarjeta de crédito" checked>
+                            <span>Tarjeta de crédito</span>
+                            <span class="payment-icons">
+                                <i class="bi bi-credit-card"></i>
+                            </span>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="Tarjeta de débito">
+                            <span>Tarjeta de débito</span>
+                            <span class="payment-icons">
+                                <i class="bi bi-credit-card-2-front"></i>
+                            </span>
+                        </label>
+
+                        <div class="row g-3 mt-2">
+
+                            <div class="col-12">
+                                <label class="form-label">Número de tarjeta</label>
+                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000" inputmode="numeric" maxlength="19" autocomplete="cc-number" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha de vencimiento</label>
+                                <input type="text" class="form-control" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">CVV</label>
+                                <input type="password" class="form-control" placeholder="123" maxlength="4" inputmode="numeric" autocomplete="cc-csc" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Nombre del titular</label>
+                                <input type="text" class="form-control" placeholder="Como aparece en la tarjeta" autocomplete="cc-name" required>
+                            </div>
+
+                        </div>
+
+                        <div class="secure-box">
+                            <i class="bi bi-shield-lock-fill"></i>
+                            <div>
+                                <strong>Pago seguro</strong>
+                                <small>Tu información está protegida durante el proceso de compra.</small>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="checkout-button">
+                            CONFIRMAR PEDIDO <i class="bi bi-arrow-right"></i>
+                        </button>
+
+                    </form>
+
+                    <div class="success-message" id="successMessage">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <strong>¡Gracias por tu compra!</strong>
+                        <p class="mb-0 mt-2">Tu pedido ha sido registrado correctamente.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RESUMEN DE COMPRA -->
+            <div class="col-lg-5">
+
+                <div class="checkout-card order-summary">
+
+                    <h3 class="section-title">Resumen de tu pedido</h3>
+
+                    <div id="orderItems"></div>
+
+                    <div id="summaryDetails">
+
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <strong id="subtotal">$0.00</strong>
+                        </div>
+
+                        <div class="summary-line">
+                            <span>Envío</span>
+                            <strong id="shipping">$0.00</strong>
+                        </div>
+
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
+                        </div>
+
+                        <p class="text-muted mt-3" style="font-size:10px;">
+                            Todos los precios están expresados en pesos mexicanos (MXN).
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="checkout-card" style="padding:23px;">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="bi bi-box-seam" style="font-size:25px; color:var(--olive);"></i>
+                        <div>
+                            <strong style="font-size:12px;">Envíos a todo México</strong>
+                            <p class="mb-0 text-muted" style="font-size:10px;">Recibe ALOURÉ directamente en tu domicilio.</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="bi bi-arrow-repeat" style="font-size:25px; color:var(--olive);"></i>
+                        <div>
+                            <strong style="font-size:12px;">Compra con confianza</strong>
+                            <p class="mb-0 text-muted" style="font-size:10px;">Una experiencia pensada para ti.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        ALOURÉ · MEN SPORTSWEAR
+        <p class="mt-2 mb-0" style="font-size:9px; color:#aaa;">
+            © 2026 ALOURÉ. TODOS LOS DERECHOS RESERVADOS.
+        </p>
+    </footer>
+
+
+    <script>
+
+        // CARRITO EXCLUSIVO DE HOMBRES
+        let cart = JSON.parse(localStorage.getItem("aloureMenCart")) || [];
+
+        const orderItems = document.getElementById("orderItems");
+        const subtotalElement = document.getElementById("subtotal");
+        const shippingElement = document.getElementById("shipping");
+        const totalElement = document.getElementById("total");
+        const summaryDetails = document.getElementById("summaryDetails");
+
+        function money(amount) {
+            return amount.toLocaleString("es-MX", {
+                style: "currency",
+                currency: "MXN"
+            });
+        }
+
+        function renderOrder() {
+
+            orderItems.innerHTML = "";
+
+            if (cart.length === 0) {
+
+                orderItems.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="bi bi-bag"></i>
+                        <p>Tu bolsa está vacía.</p>
+                        <a href="hombres.html">VOLVER A LA TIENDA</a>
+                    </div>
+                `;
+
+                summaryDetails.style.display = "none";
+                return;
+            }
+
+            summaryDetails.style.display = "block";
+
+            let subtotal = 0;
+
+            cart.forEach(product => {
+
+                const price = Number(product.price) || 0;
+                const quantity = Number(product.quantity) || 1;
+                subtotal += price * quantity;
+
+                orderItems.innerHTML += `
+                    <div class="order-item">
+
+                        <img src="${product.image}" alt="${product.name}"
+                             onerror="this.src='https://placehold.co/150x180/eae6de/555?text=ALOUR%C3%89'">
+
+                        <div class="item-info">
+                            <h6>${product.name}</h6>
+                            <p>Cantidad: ${quantity}</p>
+                            <p>${money(price)} c/u</p>
+                        </div>
+
+                        <div class="item-price">
+                            ${money(price * quantity)}
+                        </div>
+
+                    </div>
+                `;
+            });
+
+            // ENVÍO GRATIS EN COMPRAS DE $1,500 O MÁS
+            const shipping = subtotal >= 1500 ? 0 : 99;
+            const total = subtotal + shipping;
+
+            subtotalElement.textContent = money(subtotal);
+
+            shippingElement.textContent = shipping === 0
+                ? "GRATIS"
+                : money(shipping);
+
+            totalElement.textContent = money(total);
+        }
+
+        renderOrder();
+
+
+        // CONFIRMAR PEDIDO
+        document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            if (cart.length === 0) {
+                alert("Tu bolsa está vacía. Agrega productos antes de continuar.");
+                return;
+            }
+
+            if (!this.checkValidity()) {
+                this.reportValidity();
+                return;
+            }
+
+            // DEMOSTRACIÓN ESCOLAR: NO PROCESA PAGOS REALES
+            const order = {
+                products: cart,
+                date: new Date().toLocaleString("es-MX"),
+                total: totalElement.textContent
+            };
+
+            localStorage.setItem("aloureMenLastOrder", JSON.stringify(order));
+
+            // Vaciar solamente el carrito de hombres
+            localStorage.removeItem("aloureMenCart");
+
+            document.getElementById("checkoutForm").style.display = "none";
+
+            document.getElementById("successMessage").style.display = "block";
+
+            renderOrder();
+
+        });
+
+
+        // FORMATO DEL NÚMERO DE TARJETA
+        const cardInput = document.querySelector('input[autocomplete="cc-number"]');
+
+        cardInput.addEventListener("input", function() {
+
+            let value = this.value.replace(/\D/g, "").substring(0, 16);
+
+            this.value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
+
+        });
+
+
+        // FORMATO DE FECHA
+        const dateInput = document.querySelector('input[autocomplete="cc-exp"]');
+
+        dateInput.addEventListener("input", function() {
+
+            let value = this.value.replace(/\D/g, "").substring(0, 4);
+
+            if (value.length > 2) {
+                value = value.substring(0, 2) + "/" + value.substring(2);
+            }
+
+            this.value = value;
+
+        });
+
+    </script>
+
+</body>
+</html>

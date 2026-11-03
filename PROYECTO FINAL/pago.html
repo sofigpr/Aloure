@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pago seguro | ALOURÉ</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        :root {
+            --beige: #eae2d8;
+            --rosa: #f8f1f0;
+            --negro: #171715;
+            --gris: #77736f;
+            --blanco: #ffffff;
+            --dorado: #b69a61;
+            --borde: #e9e5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #faf9f7;
+            color: var(--negro);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* BARRA SUPERIOR */
+
+        .announcement {
+            background: var(--negro);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* HEADER */
+
+        .header {
+            height: 90px;
+            background: white;
+            border-bottom: 1px solid var(--borde);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 31px;
+            letter-spacing: 5px;
+            margin: 0;
+        }
+
+        .logo span {
+            font-size: 8px;
+            letter-spacing: 5px;
+        }
+
+        .back-link {
+            position: absolute;
+            left: 6%;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--gris);
+            transition: .3s;
+        }
+
+        .back-link:hover {
+            color: var(--dorado);
+        }
+
+        .secure-label {
+            position: absolute;
+            right: 6%;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #65836d;
+        }
+
+        .secure-label i {
+            margin-right: 5px;
+        }
+
+        /* CONTENEDOR */
+
+        .checkout-container {
+            max-width: 1180px;
+            margin: 65px auto;
+            padding: 0 25px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-title span {
+            color: var(--dorado);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .page-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 400;
+            margin: 12px 0;
+        }
+
+        .page-title p {
+            font-size: 12px;
+            color: var(--gris);
+        }
+
+        /* PASOS */
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #aaa;
+        }
+
+        .step-number {
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 11px;
+        }
+
+        .step.active {
+            color: var(--negro);
+        }
+
+        .step.active .step-number {
+            background: var(--negro);
+            color: white;
+            border-color: var(--negro);
+        }
+
+        .step-line {
+            width: 55px;
+            height: 1px;
+            background: #ddd;
+        }
+
+        /* TARJETAS */
+
+        .checkout-card {
+            background: white;
+            border: 1px solid var(--borde);
+            padding: 32px;
+            margin-bottom: 25px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            background: var(--rosa);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+
+        /* FORMULARIO */
+
+        .form-label {
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #56524e;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid var(--borde);
+            border-radius: 0;
+            padding: 13px 14px;
+            font-size: 12px;
+            background-color: #fff;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--dorado);
+            box-shadow: 0 0 0 2px rgba(182,154,97,.12);
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+        }
+
+        .form-text {
+            font-size: 10px;
+            color: var(--gris);
+        }
+
+        /* MÉTODOS DE PAGO */
+
+        .payment-option {
+            border: 1px solid var(--borde);
+            padding: 17px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .payment-option:hover {
+            border-color: var(--dorado);
+            background: #fdfbf8;
+        }
+
+        .payment-option.selected {
+            border-color: var(--dorado);
+            background: #fcfaf6;
+        }
+
+        .payment-option input {
+            accent-color: var(--dorado);
+        }
+
+        .payment-option .payment-name {
+            flex: 1;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .payment-option i {
+            font-size: 23px;
+            color: var(--gris);
+        }
+
+        .payment-description {
+            font-size: 10px;
+            color: var(--gris);
+            margin-top: 4px;
+        }
+
+        .card-fields {
+            display: none;
+            background: #faf9f7;
+            padding: 20px;
+            margin-top: 15px;
+            border: 1px solid var(--borde);
+        }
+
+        .card-fields.active {
+            display: block;
+        }
+
+        .payment-notice {
+            background: #f1f6f1;
+            padding: 13px;
+            font-size: 10px;
+            color: #54745b;
+            margin-top: 15px;
+            line-height: 1.7;
+        }
+
+        /* RESUMEN */
+
+        .summary-card {
+            background: white;
+            border: 1px solid var(--borde);
+            padding: 30px;
+            position: sticky;
+            top: 25px;
+        }
+
+        .summary-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .summary-product {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .summary-product img {
+            width: 78px;
+            height: 95px;
+            object-fit: cover;
+        }
+
+        .summary-product-info {
+            flex: 1;
+        }
+
+        .summary-product-info h6 {
+            font-size: 12px;
+            font-weight: 500;
+            margin: 7px 0;
+        }
+
+        .summary-product-info p {
+            font-size: 10px;
+            color: var(--gris);
+            margin: 0 0 5px;
+        }
+
+        .summary-product-price {
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 7px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin: 15px 0;
+            color: var(--gris);
+        }
+
+        .summary-row strong {
+            color: var(--negro);
+            font-weight: 500;
+        }
+
+        .summary-total {
+            border-top: 1px solid var(--borde);
+            padding-top: 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: var(--negro);
+        }
+
+        .summary-total strong {
+            font-size: 19px;
+        }
+
+        .shipping-message {
+            background: var(--rosa);
+            padding: 13px;
+            font-size: 10px;
+            line-height: 1.7;
+            margin: 20px 0;
+            color: #756b65;
+        }
+
+        .shipping-message i {
+            margin-right: 5px;
+            color: var(--dorado);
+        }
+
+        /* BOTÓN */
+
+        .confirm-button {
+            width: 100%;
+            background: var(--negro);
+            color: white;
+            border: 1px solid var(--negro);
+            padding: 17px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .confirm-button:hover {
+            background: var(--dorado);
+            border-color: var(--dorado);
+        }
+
+        .secure-footer {
+            text-align: center;
+            font-size: 10px;
+            color: var(--gris);
+            margin-top: 18px;
+            line-height: 1.8;
+        }
+
+        .secure-footer i {
+            color: #65836d;
+            margin-right: 5px;
+        }
+
+        /* MODAL CONFIRMACIÓN */
+
+        .success-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.55);
+            z-index: 5000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .success-modal.active {
+            display: flex;
+        }
+
+        .success-content {
+            background: white;
+            max-width: 480px;
+            width: 100%;
+            padding: 50px 35px;
+            text-align: center;
+            animation: appear .4s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 65px;
+            height: 65px;
+            background: #edf4ed;
+            color: #65836d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 25px;
+        }
+
+        .success-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .success-content p {
+            font-size: 12px;
+            color: var(--gris);
+            line-height: 1.8;
+        }
+
+        .order-number {
+            background: var(--rosa);
+            padding: 15px;
+            margin: 25px 0;
+            font-size: 12px;
+        }
+
+        .success-button {
+            display: block;
+            background: var(--negro);
+            color: white;
+            padding: 16px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+
+        .success-button:hover {
+            background: var(--dorado);
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--negro);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 70px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            letter-spacing: 5px;
+        }
+
+        footer p {
+            font-size: 10px;
+            color: #c5c1bc;
+            margin-top: 12px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            .header {
+                height: 75px;
+            }
+
+            .logo h1 {
+                font-size: 24px;
+            }
+
+            .back-link {
+                left: 4%;
+                font-size: 9px;
+            }
+
+            .secure-label {
+                right: 4%;
+                font-size: 8px;
+            }
+
+            .checkout-container {
+                margin: 40px auto;
+                padding: 0 15px;
+            }
+
+            .page-title h2 {
+                font-size: 34px;
+            }
+
+            .steps {
+                gap: 9px;
+            }
+
+            .step {
+                font-size: 8px;
+                gap: 5px;
+            }
+
+            .step-line {
+                width: 20px;
+            }
+
+            .checkout-card {
+                padding: 22px 17px;
+            }
+
+            .summary-card {
+                position: static;
+                margin-top: 25px;
+                padding: 22px 17px;
+            }
+
+        }
+
+        @media (max-width: 400px) {
+
+            .secure-label {
+                font-size: 7px;
+            }
+
+            .back-link {
+                font-size: 8px;
+            }
+
+            .step {
+                font-size: 7px;
+            }
+
+            .step-number {
+                width: 23px;
+                height: 23px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+
+    <div class="announcement">
+        ALOURÉ · Compra segura y experiencia premium
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <a href="index.html" class="back-link">
+            <i class="bi bi-arrow-left"></i>
+            VOLVER A LA TIENDA
+        </a>
+
+        <a href="index.html" class="logo">
+
+            <h1>ALOURÉ</h1>
+
+            <span>SPORTSWEAR</span>
+
+        </a>
+
+        <div class="secure-label">
+            <i class="bi bi-shield-lock-fill"></i>
+            PAGO SEGURO
+        </div>
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+
+    <main class="checkout-container">
+
+
+        <!-- TÍTULO -->
+
+        <div class="page-title">
+
+            <span>Un último paso</span>
+
+            <h2>Finalizar compra</h2>
+
+            <p>Estás a un paso de recibir tus favoritos de ALOURÉ.</p>
+
+        </div>
+
+
+        <!-- PASOS -->
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">
+                    <i class="bi bi-check"></i>
+                </div>
+
+                <span>BOLSA</span>
+
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step active">
+
+                <div class="step-number">2</div>
+
+                <span>PAGO</span>
+
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <span>CONFIRMACIÓN</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMULARIO Y RESUMEN -->
+
+        <div class="row g-4">
+
+
+            <!-- COLUMNA IZQUIERDA -->
+
+            <div class="col-lg-7">
+
+
+                <!-- INFORMACIÓN DE CONTACTO -->
+
+                <section class="checkout-card">
+
+                    <h3 class="card-title">
+
+                        <span class="section-number">1</span>
+
+                        Información de contacto
+
+                    </h3>
+
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="firstName"
+                                placeholder="Tu nombre"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Apellidos
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="lastName"
+                                placeholder="Tus apellidos"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-7">
+
+                            <label class="form-label">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                placeholder="ejemplo@correo.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-5">
+
+                            <label class="form-label">
+                                Teléfono
+                            </label>
+
+                            <input
+                                type="tel"
+                                class="form-control"
+                                id="phone"
+                                placeholder="10 dígitos"
+                                maxlength="10"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- DIRECCIÓN -->
+
+                <section class="checkout-card">
+
+                    <h3 class="card-title">
+
+                        <span class="section-number">2</span>
+
+                        Dirección de envío
+
+                    </h3>
+
+
+                    <div class="row g-3">
+
+
+                        <div class="col-12">
+
+                            <label class="form-label">
+                                Calle y número
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="street"
+                                placeholder="Ej. Avenida Reforma 123"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Colonia
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="neighborhood"
+                                placeholder="Tu colonia"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Código postal
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="postalCode"
+                                placeholder="00000"
+                                maxlength="5"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Ciudad
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="city"
+                                placeholder="Tu ciudad"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                Estado
+                            </label>
+
+                            <select
+                                class="form-select"
+                                id="state"
+                                required
+                            >
+
+                                <option value="">Selecciona tu estado</option>
+
+                                <option>Aguascalientes</option>
+                                <option>Baja California</option>
+                                <option>Baja California Sur</option>
+                                <option>Campeche</option>
+                                <option>Chiapas</option>
+                                <option>Chihuahua</option>
+                                <option>Ciudad de México</option>
+                                <option>Coahuila</option>
+                                <option>Colima</option>
+                                <option>Durango</option>
+                                <option>Estado de México</option>
+                                <option>Guanajuato</option>
+                                <option>Guerrero</option>
+                                <option>Hidalgo</option>
+                                <option>Jalisco</option>
+                                <option>Michoacán</option>
+                                <option>Morelos</option>
+                                <option>Nayarit</option>
+                                <option>Nuevo León</option>
+                                <option>Oaxaca</option>
+                                <option>Puebla</option>
+                                <option>Querétaro</option>
+                                <option>Quintana Roo</option>
+                                <option>San Luis Potosí</option>
+                                <option>Sinaloa</option>
+                                <option>Sonora</option>
+                                <option>Tabasco</option>
+                                <option>Tamaulipas</option>
+                                <option>Tlaxcala</option>
+                                <option>Veracruz</option>
+                                <option>Yucatán</option>
+                                <option>Zacatecas</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- MÉTODO DE PAGO -->
+
+                <section class="checkout-card">
+
+                    <h3 class="card-title">
+
+                        <span class="section-number">3</span>
+
+                        Método de pago
+
+                    </h3>
+
+
+                    <p class="form-text mb-4">
+                        Selecciona la opción que prefieras para completar tu compra.
+                    </p>
+
+
+                    <!-- TARJETA -->
+
+                    <label class="payment-option selected" id="optionCard">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="card"
+                            checked
+                        >
+
+                        <div class="payment-name">
+
+                            Tarjeta de crédito o débito
+
+                            <div class="payment-description">
+                                Visa · Mastercard
+                            </div>
+
+                        </div>
+
+                        <i class="bi bi-credit-card"></i>
+
+                    </label>
+
+
+                    <!-- DATOS DE TARJETA -->
+
+                    <div class="card-fields active" id="cardFields">
+
+                        <div class="row g-3">
+
+                            <div class="col-12">
+
+                                <label class="form-label">
+                                    Nombre del titular
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="cardName"
+                                    placeholder="Nombre como aparece en la tarjeta"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <label class="form-label">
+                                    Número de tarjeta (demostración)
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="cardNumber"
+                                    placeholder="0000 0000 0000 0000"
+                                    maxlength="19"
+                                    inputmode="numeric"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+
+                            <div class="col-6">
+
+                                <label class="form-label">
+                                    Vencimiento
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="expiry"
+                                    placeholder="MM/AA"
+                                    maxlength="5"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+
+                            <div class="col-6">
+
+                                <label class="form-label">
+                                    CVV
+                                </label>
+
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="cvv"
+                                    placeholder="000"
+                                    maxlength="4"
+                                    inputmode="numeric"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="payment-notice">
+
+                            <i class="bi bi-info-circle"></i>
+
+                            Esta sección es una simulación académica.
+                            Utiliza únicamente datos ficticios.
+                            No introduzcas información de tarjetas reales.
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYPAL -->
+
+                    <label class="payment-option" id="optionPaypal">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="paypal"
+                        >
+
+                        <div class="payment-name">
+
+                            PayPal
+
+                            <div class="payment-description">
+                                Pago mediante cuenta PayPal (demostración).
+                            </div>
+
+                        </div>
+
+                        <i class="bi bi-paypal"></i>
+
+                    </label>
+
+
+                    <!-- TRANSFERENCIA -->
+
+                    <label class="payment-option" id="optionTransfer">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="transfer"
+                        >
+
+                        <div class="payment-name">
+
+                            Transferencia bancaria
+
+                            <div class="payment-description">
+                                Método de pago por transferencia (demostración).
+                            </div>
+
+                        </div>
+
+                        <i class="bi bi-bank"></i>
+
+                    </label>
+
+
+                    <div class="payment-notice">
+
+                        <i class="bi bi-shield-lock-fill"></i>
+
+                        Tus datos se utilizan únicamente para esta
+                        demostración de compra. Esta página no realiza
+                        transacciones bancarias reales.
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+
+            <!-- COLUMNA DERECHA: RESUMEN -->
+
+            <div class="col-lg-5">
+
+                <aside class="summary-card">
+
+                    <h3 class="summary-title">
+                        Resumen de tu pedido
+                    </h3>
+
+
+                    <div id="orderProducts">
+
+                        <!-- Los productos aparecen automáticamente -->
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>Subtotal</span>
+
+                        <strong id="subtotal">$0 MXN</strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>Envío</span>
+
+                        <strong id="shipping">$0 MXN</strong>
+
+                    </div>
+
+
+                    <div class="shipping-message" id="shippingMessage">
+
+                        <i class="bi bi-truck"></i>
+
+                        Tu pedido está a punto de llegar.
+
+                    </div>
+
+
+                    <div class="summary-row summary-total">
+
+                        <span>Total</span>
+
+                        <strong id="total">$0 MXN</strong>
+
+                    </div>
+
+
+                    <button
+                        class="confirm-button"
+                        id="confirmButton"
+                        type="button"
+                    >
+
+                        <i class="bi bi-lock-fill"></i>
+
+                        CONFIRMAR PEDIDO
+
+                    </button>
+
+
+                    <div class="secure-footer">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        Compra segura · Protección de datos
+
+                        <br>
+
+                        Gracias por elegir ALOURÉ.
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- MODAL DE CONFIRMACIÓN -->
+
+    <div class="success-modal" id="successModal">
+
+        <div class="success-content">
+
+            <div class="success-icon">
+
+                <i class="bi bi-check-lg"></i>
+
+            </div>
+
+
+            <h2>¡Gracias por tu compra!</h2>
+
+
+            <p>
+                Tu pedido ha sido registrado correctamente
+                en esta demostración de ALOURÉ.
+            </p>
+
+
+            <div class="order-number">
+
+                Número de pedido:
+
+                <strong id="orderNumber"></strong>
+
+            </div>
+
+
+            <p>
+                Esperamos que disfrutes tu nueva colección.
+                Gracias por formar parte de ALOURÉ.
+            </p>
+
+
+            <a href="index.html" class="success-button" id="returnButton">
+                VOLVER A LA TIENDA
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            ALOURÉ
+        </div>
+
+        <p>
+            SPORTSWEAR · Diseñado para acompañar tu movimiento.
+        </p>
+
+        <p>
+            © 2026 ALOURÉ. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        /* =====================================
+           RECUPERAR CARRITO
+        ===================================== */
+
+        let cart = JSON.parse(localStorage.getItem('aloureCart')) || [];
+
+
+        /* =====================================
+           FORMATO DE PRECIOS
+        ===================================== */
+
+        function formatPrice(price) {
+
+            return price.toLocaleString('es-MX', {
+
+                style: 'currency',
+
+                currency: 'MXN',
+
+                maximumFractionDigits: 0
+
+            });
+
+        }
+
+
+        /* =====================================
+           MOSTRAR PRODUCTOS
+        ===================================== */
+
+        function renderOrder() {
+
+            const orderProducts = document.getElementById('orderProducts');
+
+            orderProducts.innerHTML = '';
+
+
+            let subtotal = 0;
+
+
+            if (cart.length === 0) {
+
+                orderProducts.innerHTML = `
+
+                    <div class="text-center py-4">
+
+                        <i class="bi bi-bag" style="font-size:35px;color:#b69a61;"></i>
+
+                        <p class="mt-3" style="font-size:12px;color:#777;">
+                            Tu bolsa está vacía.
+                        </p>
+
+                        <a href="index.html" style="font-size:11px;text-decoration:underline;">
+                            Regresar a la tienda
+                        </a>
+
+                    </div>
+
+                `;
+
+                document.getElementById('confirmButton').disabled = true;
+
+                document.getElementById('confirmButton').style.opacity = '.5';
+
+                updateTotals(0);
+
+                return;
+
+            }
+
+
+            document.getElementById('confirmButton').disabled = false;
+
+            document.getElementById('confirmButton').style.opacity = '1';
+
+
+            cart.forEach(function(product) {
+
+                subtotal += product.price * product.quantity;
+
+
+                const item = document.createElement('div');
+
+                item.className = 'summary-product';
+
+
+                item.innerHTML = `
+
+                    <img src="${product.image}" alt="${product.name}">
+
+                    <div class="summary-product-info">
+
+                        <h6>${product.name}</h6>
+
+                        <p>Cantidad: ${product.quantity}</p>
+
+                        <p>ALOURÉ Sportswear</p>
+
+                        <div class="summary-product-price">
+
+                            ${formatPrice(product.price * product.quantity)}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                orderProducts.appendChild(item);
+
+            });
+
+
+            updateTotals(subtotal);
+
+        }
+
+
+
+        /* =====================================
+           CALCULAR SUBTOTAL Y TOTAL
+        ===================================== */
+
+        function updateTotals(subtotal) {
+
+            let shipping = subtotal >= 2000 || subtotal === 0 ? 0 : 150;
+
+            let total = subtotal + shipping;
+
+
+            document.getElementById('subtotal').textContent = formatPrice(subtotal);
+
+            document.getElementById('shipping').textContent =
+
+                shipping === 0 ? 'GRATIS' : formatPrice(shipping);
+
+
+            document.getElementById('total').textContent = formatPrice(total);
+
+
+            const shippingMessage = document.getElementById('shippingMessage');
+
+
+            if (subtotal === 0) {
+
+                shippingMessage.innerHTML = `
+
+                    <i class="bi bi-bag"></i>
+
+                    Agrega productos para continuar con tu compra.
+
+                `;
+
+            }
+
+            else if (subtotal >= 2000) {
+
+                shippingMessage.innerHTML = `
+
+                    <i class="bi bi-check-circle"></i>
+
+                    ¡Felicidades! Tu compra tiene envío gratuito.
+
+                `;
+
+            }
+
+            else {
+
+                let missing = 2000 - subtotal;
+
+                shippingMessage.innerHTML = `
+
+                    <i class="bi bi-truck"></i>
+
+                    Agrega ${formatPrice(missing)} más para obtener envío gratis.
+
+                `;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           CAMBIAR MÉTODO DE PAGO
+        ===================================== */
+
+        const paymentOptions = document.querySelectorAll('input[name="payment"]');
+
+        const cardFields = document.getElementById('cardFields');
+
+
+        function updatePaymentMethod() {
+
+            const selected = document.querySelector('input[name="payment"]:checked').value;
+
+
+            document.querySelectorAll('.payment-option').forEach(function(option) {
+
+                option.classList.remove('selected');
+
+            });
+
+
+            if (selected === 'card') {
+
+                document.getElementById('optionCard').classList.add('selected');
+
+                cardFields.classList.add('active');
+
+            }
+
+
+            if (selected === 'paypal') {
+
+                document.getElementById('optionPaypal').classList.add('selected');
+
+                cardFields.classList.remove('active');
+
+            }
+
+
+            if (selected === 'transfer') {
+
+                document.getElementById('optionTransfer').classList.add('selected');
+
+                cardFields.classList.remove('active');
+
+            }
+
+        }
+
+
+        paymentOptions.forEach(function(option) {
+
+            option.addEventListener('change', updatePaymentMethod);
+
+        });
+
+
+
+        /* =====================================
+           FORMATO DE TARJETA
+        ===================================== */
+
+        document.getElementById('cardNumber').addEventListener('input', function() {
+
+            let value = this.value.replace(/\D/g, '').substring(0, 16);
+
+            this.value = value.replace(/(.{4})/g, '$1 ').trim();
+
+        });
+
+
+        document.getElementById('expiry').addEventListener('input', function() {
+
+            let value = this.value.replace(/\D/g, '').substring(0, 4);
+
+            if (value.length >= 3) {
+
+                value = value.substring(0, 2) + '/' + value.substring(2);
+
+            }
+
+            this.value = value;
+
+        });
+
+
+        document.getElementById('cvv').addEventListener('input', function() {
+
+            this.value = this.value.replace(/\D/g, '').substring(0, 4);
+
+        });
+
+
+        document.getElementById('postalCode').addEventListener('input', function() {
+
+            this.value = this.value.replace(/\D/g, '').substring(0, 5);
+
+        });
+
+
+        document.getElementById('phone').addEventListener('input', function() {
+
+            this.value = this.value.replace(/\D/g, '').substring(0, 10);
+
+        });
+
+
+
+        /* =====================================
+           VALIDAR FORMULARIO
+        ===================================== */
+
+        function validateFields() {
+
+            const requiredFields = [
+
+                'firstName',
+
+                'lastName',
+
+                'email',
+
+                'phone',
+
+                'street',
+
+                'neighborhood',
+
+                'postalCode',
+
+                'city',
+
+                'state'
+
+            ];
+
+
+            for (let id of requiredFields) {
+
+                const field = document.getElementById(id);
+
+                if (!field.value.trim() || !field.checkValidity()) {
+
+                    field.focus();
+
+                    field.reportValidity();
+
+                    return false;
+
+                }
+
+            }
+
+
+            if (document.getElementById('phone').value.length !== 10) {
+
+                alert('Escribe un número de teléfono de 10 dígitos.');
+
+                document.getElementById('phone').focus();
+
+                return false;
+
+            }
+
+
+            if (document.getElementById('postalCode').value.length !== 5) {
+
+                alert('Escribe un código postal de 5 dígitos.');
+
+                document.getElementById('postalCode').focus();
+
+                return false;
+
+            }
+
+
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+
+
+            if (payment === 'card') {
+
+                const cardName = document.getElementById('cardName');
+
+                const cardNumber = document.getElementById('cardNumber');
+
+                const expiry = document.getElementById('expiry');
+
+                const cvv = document.getElementById('cvv');
+
+
+                if (!cardName.value.trim()) {
+
+                    alert('Escribe el nombre del titular de la tarjeta.');
+
+                    cardName.focus();
+
+                    return false;
+
+                }
+
+
+                if (cardNumber.value.replace(/\s/g, '').length !== 16) {
+
+                    alert('Escribe un número de tarjeta ficticio de 16 dígitos.');
+
+                    cardNumber.focus();
+
+                    return false;
+
+                }
+
+
+                if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry.value)) {
+
+                    alert('Escribe una fecha de vencimiento en formato MM/AA.');
+
+                    expiry.focus();
+
+                    return false;
+
+                }
+
+
+                if (!/^\d{3,4}$/.test(cvv.value)) {
+
+                    alert('Escribe un CVV ficticio de 3 o 4 dígitos.');
+
+                    cvv.focus();
+
+                    return false;
+
+                }
+
+            }
+
+
+            return true;
+
+        }
+
+
+
+        /* =====================================
+           CONFIRMAR PEDIDO
+        ===================================== */
+
+        document.getElementById('confirmButton').addEventListener('click', function() {
+
+
+            if (cart.length === 0) {
+
+                alert('Tu bolsa está vacía. Regresa a la tienda para agregar productos.');
+
+                return;
+
+            }
+
+
+            if (!validateFields()) {
+
+                return;
+
+            }
+
+
+            const orderCode = 'AL-' + Math.floor(100000 + Math.random() * 900000);
+
+
+            document.getElementById('orderNumber').textContent = orderCode;
+
+
+            // Eliminar los datos de tarjeta de los campos.
+            // Nunca se guardan en localStorage.
+
+            document.getElementById('cardNumber').value = '';
+
+            document.getElementById('cardName').value = '';
+
+            document.getElementById('expiry').value = '';
+
+            document.getElementById('cvv').value = '';
+
+
+            // Limpiar el carrito después de confirmar.
+
+            cart = [];
+
+            localStorage.removeItem('aloureCart');
+
+
+            // Mostrar confirmación.
+
+            document.getElementById('successModal').classList.add('active');
+
+
+        });
+
+
+
+        /* =====================================
+   REGRESAR A LA TIENDA
+===================================== */
+
+document.getElementById('returnButton').addEventListener('click', function() {
+
+    // Conservar los productos del carrito
+    // y regresar a la página principal.
+
+    window.location.href = 'index.html';
+
+});
+
+
+
+        /* =====================================
+           INICIAR PÁGINA
+        ===================================== */
+
+        renderOrder();
+
+        updatePaymentMethod();
+
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

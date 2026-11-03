@@ -1,0 +1,2288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALOURÉ | Activewear</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --beige: #eae2d8;
+            --rosa: #f8f1f0;
+            --negro: #171715;
+            --gris: #77736f;
+            --blanco: #ffffff;
+            --dorado: #b69a61;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--negro);
+            background: var(--blanco);
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* BARRA SUPERIOR */
+
+        .announcement {
+            background: var(--negro);
+            color: white;
+            text-align: center;
+            padding: 9px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* HEADER */
+
+        .main-header {
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .header-left,
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .icon-button {
+            border: none;
+            background: transparent;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--negro);
+            transition: .3s;
+        }
+
+        .icon-button:hover {
+            color: var(--dorado);
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 31px;
+            letter-spacing: 5px;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .logo span {
+            font-size: 8px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--dorado);
+            color: white;
+            font-size: 10px;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* BUSCADOR */
+
+        .search-box {
+            display: none;
+            position: absolute;
+            top: 85px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 25px 8%;
+            box-shadow: 0 8px 15px rgba(0,0,0,.07);
+            z-index: 999;
+        }
+
+        .search-box.active {
+            display: block;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .search-result {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            transition: .3s;
+        }
+
+        .search-result:hover {
+            background: var(--rosa);
+        }
+
+        .search-result img {
+            width: 65px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+        .search-result h6 {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .search-result p {
+            font-size: 12px;
+            color: var(--gris);
+            margin: 0;
+        }
+
+        /* MENÚ LATERAL */
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -350px;
+            width: 320px;
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            padding: 35px;
+            transition: .4s;
+            box-shadow: 5px 0 20px rgba(0,0,0,.08);
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        .menu-close {
+            background: none;
+            border: none;
+            font-size: 25px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .side-menu h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 45px 0 35px;
+            letter-spacing: 3px;
+        }
+
+        .side-menu a {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: .3s;
+        }
+
+        .side-menu a:hover {
+            color: var(--dorado);
+            padding-left: 8px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.35);
+            z-index: 1500;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 610px;
+            background:
+                linear-gradient(rgba(0,0,0,.10), rgba(0,0,0,.10)),
+                url(portada.img);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 8%;
+        }
+
+        .hero-content {
+            max-width: 480px;
+            color: white;
+        }
+
+        .hero-content .season {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(45px, 6vw, 75px);
+            line-height: 1.1;
+            margin: 20px 0;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 13px;
+            line-height: 2;
+            max-width: 380px;
+            margin-bottom: 30px;
+        }
+
+        .btn-aloure {
+            display: inline-block;
+            background: var(--negro);
+            color: white;
+            border: 1px solid var(--negro);
+            padding: 15px 32px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .btn-aloure:hover {
+            background: transparent;
+            color: var(--negro);
+        }
+
+        .hero .btn-aloure {
+            background: white;
+            color: var(--negro);
+            border-color: white;
+        }
+
+        .hero .btn-aloure:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* BENEFICIOS */
+
+        .benefits {
+            padding: 35px 6%;
+            background: var(--rosa);
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .benefit-item i {
+            font-size: 22px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .benefit-item p {
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        /* SECCIONES */
+
+        .section-padding {
+            padding: 90px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading span {
+            color: var(--dorado);
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 39px;
+            margin-top: 12px;
+            font-weight: 400;
+        }
+
+        .section-heading p {
+            font-size: 12px;
+            color: var(--gris);
+            margin-top: 12px;
+        }
+
+        /* PRODUCTOS */
+
+        .product-card {
+            border: none;
+            margin-bottom: 35px;
+            background: white;
+        }
+
+        .product-image-wrap {
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+            background: var(--rosa);
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .6s;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.04);
+        }
+
+        .product-info {
+            padding: 18px 2px;
+        }
+
+        .product-info h5 {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: var(--gris);
+            font-size: 12px;
+            margin-bottom: 13px;
+        }
+
+        .product-price {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .add-button {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #d7d1cb;
+            padding: 12px;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+
+        .add-button:hover {
+            background: var(--negro);
+            color: white;
+            border-color: var(--negro);
+        }
+
+        /* CATEGORÍAS */
+
+        .category-card {
+            position: relative;
+            height: 390px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-title {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+        }
+
+        /* EDITORIAL */
+
+        .editorial {
+            background: var(--rosa);
+        }
+
+        .editorial img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+        }
+
+        .editorial-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .editorial-content span {
+            color: var(--dorado);
+            letter-spacing: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .editorial-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 43px;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+
+        .editorial-content p {
+            color: var(--gris);
+            font-size: 13px;
+            line-height: 2;
+            max-width: 420px;
+        }
+
+        /* TESTIMONIOS */
+
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .testimonial-card img {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card h5 {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .stars {
+            color: var(--dorado);
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card p {
+            color: var(--gris);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* NEWSLETTER */
+
+        .newsletter {
+            background: var(--beige);
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 37px;
+            font-weight: 400;
+        }
+
+        .newsletter p {
+            color: var(--gris);
+            font-size: 12px;
+            margin: 15px 0 25px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 450px;
+            margin: auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 0;
+            padding: 14px;
+            border: none;
+            outline: none;
+            font-size: 12px;
+        }
+
+        .newsletter-form button {
+            border: none;
+            background: var(--negro);
+            color: white;
+            padding: 0 22px;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--negro);
+            color: white;
+            padding: 55px 7% 25px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            letter-spacing: 5px;
+        }
+
+        footer p,
+        footer a {
+            color: #c5c1bc;
+            font-size: 11px;
+            line-height: 2.2;
+        }
+
+        footer h6 {
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        footer a {
+            display: block;
+            transition: .3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #383735;
+            margin-top: 35px;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* CARRITO LATERAL */
+
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 420px;
+            max-width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 2100;
+            transition: .4s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -5px 0 20px rgba(0,0,0,.1);
+        }
+
+        .cart-panel.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 25px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 23px;
+            margin: 0;
+        }
+
+        .cart-items {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 90px;
+            height: 110px;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h6 {
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .cart-item-info p {
+            color: var(--gris);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quantity-controls button {
+            background: var(--rosa);
+            border: none;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #a17c72;
+            font-size: 11px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .cart-footer {
+            padding: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .checkout-button {
+            width: 100%;
+            background: var(--negro);
+            color: white;
+            padding: 16px;
+            border: none;
+            font-size: 10px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .checkout-button:hover {
+            background: var(--dorado);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gris);
+            font-size: 13px;
+        }
+
+        .empty-cart i {
+            font-size: 35px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* NOTIFICACIÓN */
+
+        .toast-aloure {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--negro);
+            color: white;
+            padding: 15px 22px;
+            font-size: 12px;
+            z-index: 3000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: .3s;
+            pointer-events: none;
+        }
+
+        .toast-aloure.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            .main-header {
+                height: 70px;
+                padding: 0 5%;
+            }
+
+            .logo h1 {
+                font-size: 23px;
+            }
+
+            .logo span {
+                font-size: 7px;
+            }
+
+            .header-left,
+            .header-right {
+                gap: 15px;
+            }
+
+            .icon-button {
+                font-size: 19px;
+            }
+
+            .hero {
+                min-height: 550px;
+                background-position: 60% center;
+                padding: 8%;
+            }
+
+            .hero-content h2 {
+                font-size: 48px;
+            }
+
+            .section-padding {
+                padding: 65px 6%;
+            }
+
+            .section-heading h2 {
+                font-size: 32px;
+            }
+
+            .category-card {
+                height: 300px;
+            }
+
+            .editorial img {
+                height: 350px;
+            }
+
+            .editorial-content {
+                padding: 35px 20px;
+            }
+
+            .editorial-content h2 {
+                font-size: 35px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .newsletter-form button {
+                padding: 15px;
+            }
+
+            .cart-panel {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .announcement {
+                font-size: 8px;
+            }
+
+            .hero-content h2 {
+                font-size: 40px;
+            }
+
+            .hero-content p {
+                font-size: 12px;
+            }
+
+            .section-heading h2 {
+                font-size: 29px;
+            }
+
+            .product-info h5 {
+                font-size: 11px;
+            }
+
+            .add-button {
+                font-size: 8px;
+                padding: 10px 5px;
+            }
+
+            .testimonial-card {
+                padding: 12px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+
+    <div class="announcement">
+        Envío gratuito en pedidos superiores a $2,000 MXN
+    </div>
+
+    <!-- HEADER -->
+
+    <header class="main-header">
+
+        <div class="header-left">
+            <button class="icon-button" id="menuButton" aria-label="Abrir menú">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+
+        <a href="index.html" class="logo">
+            <h1>ALOURÉ</h1>
+            <span>SPORTSWEAR</span>
+        </a>
+
+        <div class="header-right">
+
+            <button class="icon-button" id="searchButton" aria-label="Buscar">
+                <i class="bi bi-search"></i>
+            </button>
+
+            <button class="icon-button cart-icon" id="cartButton" aria-label="Abrir carrito">
+                <i class="bi bi-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+
+        </div>
+
+        <!-- BUSCADOR -->
+
+        <div class="search-box" id="searchBox">
+
+            <input
+                type="text"
+                class="search-input"
+                id="searchInput"
+                placeholder="¿Qué estás buscando?"
+            >
+
+            <div class="search-results" id="searchResults"></div>
+
+        </div>
+
+    </header>
+
+    <!-- MENÚ LATERAL -->
+
+    <div class="side-menu" id="sideMenu">
+
+        <button class="menu-close" id="menuClose">
+            <i class="bi bi-x"></i>
+        </button>
+
+        <h3>ALOURÉ</h3>
+
+        <a href="hombres.html" style="display:block; padding:15px; margin-bottom:20px; background:#eae2d8; color:#171715; text-align:center; font-size:11px; letter-spacing:1.5px; font-weight:600; text-decoration:none; border:1px solid #d8cbbb;">
+    EXPLORA NUESTRA COLECCIÓN DE HOMBRES ↗
+</a>
+        <a href="#novedades" class="menu-link">Novedades</a>
+        <a href="#coleccion" class="menu-link">Colección</a>
+        <a href="#leggings" class="menu-link">Leggings</a>
+        <a href="#tops" class="menu-link">Tops</a>
+        <a href="#conjuntos" class="menu-link">Conjuntos</a>
+        <a href="#accesorios" class="menu-link">Accesorios</a>
+
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="season">Primavera · Verano 2026</span>
+
+            <h2>Muévete con belleza.</h2>
+
+            <p>
+                Prendas esenciales que elevan tu movimiento,
+                diseñadas para acompañarte en cada momento.
+            </p>
+
+            <a href="#coleccion" class="btn-aloure">
+                Comprar ahora
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- BENEFICIOS -->
+
+    <section class="benefits">
+
+        <div class="row">
+
+            <div class="col-6 col-md-3 benefit-item">
+                <i class="bi bi-truck"></i>
+                <p>Envíos a todo México</p>
+            </div>
+
+            <div class="col-6 col-md-3 benefit-item">
+                <i class="bi bi-gem"></i>
+                <p>Calidad premium</p>
+            </div>
+
+            <div class="col-6 col-md-3 benefit-item">
+                <i class="bi bi-arrow-repeat"></i>
+                <p>Cambios sencillos</p>
+            </div>
+
+            <div class="col-6 col-md-3 benefit-item">
+                <i class="bi bi-heart"></i>
+                <p>Diseñado para ti</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- NOVEDADES -->
+
+    <section class="section-padding" id="novedades">
+
+        <div class="section-heading">
+
+            <span>Descubre lo nuevo</span>
+
+            <h2>Últimas novedades</h2>
+
+            <p>Diseños que se adaptan a tu ritmo y estilo.</p>
+
+        </div>
+
+        <div class="row">
+
+            <!-- PRODUCTO 1 -->
+
+            <div class="col-6 col-lg-3">
+
+                <div class="product-card">
+
+                    <div class="product-image-wrap">
+
+                        <img
+                            src="legging.img"
+                            class="product-image"
+                            alt="Legging Gear Sculpt"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h5>Legging Gear Sculpt</h5>
+
+                        <p>Leggings de cintura alta</p>
+
+                        <div class="product-price">$1,590 MXN</div>
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart('legging', 'Legging Gear Sculpt', 1590, 'legging.img')"
+                        >
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PRODUCTO 2 -->
+
+            <div class="col-6 col-lg-3">
+
+                <div class="product-card">
+
+                    <div class="product-image-wrap">
+
+                        <img
+                            src="top.img"
+                            class="product-image"
+                            alt="Top Contour"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h5>Top Contour</h5>
+
+                        <p>Top deportivo de soporte medio</p>
+
+                        <div class="product-price">$980 MXN</div>
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart('top', 'Top Contour', 980, 'top.img')"
+                        >
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PRODUCTO 3 -->
+
+            <div class="col-6 col-lg-3">
+
+                <div class="product-card">
+
+                    <div class="product-image-wrap">
+
+                        <img
+                            src="conjunto.img"
+                            class="product-image"
+                            alt="Conjunto Elan"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h5>Conjunto Elan</h5>
+
+                        <p>Conjunto deportivo completo</p>
+
+                        <div class="product-price">$2,250 MXN</div>
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart('conjunto', 'Conjunto Elan', 2250, 'conjunto.img')"
+                        >
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PRODUCTO 4 -->
+
+            <div class="col-6 col-lg-3">
+
+                <div class="product-card">
+
+                    <div class="product-image-wrap">
+
+                        <img
+                            src="chaqueta.img"
+                            class="product-image"
+                            alt="Chaqueta Softhorn"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h5>Chaqueta Softhorn</h5>
+
+                        <p>Chaqueta ligera deportiva</p>
+
+                        <div class="product-price">$1,980 MXN</div>
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart('chaqueta', 'Chaqueta Softhorn', 1980, 'chaqueta.img')"
+                        >
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CATEGORÍAS -->
+
+    <section class="section-padding pt-0">
+
+        <div class="section-heading">
+
+            <span>Encuentra tu estilo</span>
+
+            <h2>Explora nuestras categorías</h2>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <a href="#leggings">
+
+                    <div class="category-card">
+
+                        <img
+                            src="colores.img"
+                            alt="Leggings"
+                        >
+
+                        <div class="category-title">Leggings</div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <a href="#tops">
+
+                    <div class="category-card">
+
+                        <img
+                            src="topscolores.img"
+                            alt="Tops"
+                        >
+
+                        <div class="category-title">Tops</div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <a href="#conjuntos">
+
+                    <div class="category-card">
+
+                        <img
+                            src="pants.img"
+                            alt="Conjuntos"
+                        >
+
+                        <div class="category-title">Conjuntos</div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- COLECCIÓN -->
+
+    <section class="section-padding editorial" id="coleccion">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+
+                <img
+                    src="run.img"
+                    alt="Colección Alouré"
+                >
+
+            </div>
+
+            <div class="col-md-6 editorial-content">
+
+                <span>La nueva colección</span>
+
+                <h2>Encuentra tu propio equilibrio.</h2>
+
+                <p>
+                    En ALOURÉ creemos que sentirte bien es el primer paso
+                    para verte increíble. Creamos prendas que combinan
+                    comodidad, diseño y funcionalidad para acompañarte
+                    dentro y fuera de tu entrenamiento.
+                </p>
+
+                <a href="#novedades" class="btn-aloure">
+                    Descubrir colección
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PRODUCTOS DE COLECCIÓN -->
+
+    <section class="section-padding" id="leggings">
+
+        <div class="section-heading">
+
+            <span>ALOURÉ essentials</span>
+
+            <h2>Diseñados para moverte</h2>
+
+            <p>Encuentra tus nuevos favoritos.</p>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-6 col-lg-3">
+
+                <div class="product-card">
+
+                    <div class="product-image-wrap">
+
+                        <img
+                            src="legging.img"
+                            class="product-image"
+                            alt="Legging Gear Sculpt"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h5>Legging Gear Sculpt</h5>
+
+                        <p>Leggings de cintura alta</p>
+
+                        <div class="product-price">$1,590 MXN</div>
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart('legging', 'Legging Gear Sculpt', 1590, 'legging.img')"
+                        >
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-6 col-lg-3" id="tops">
+
+                <div class="product-card">
+
+                    <div class="product-image-wrap">
+
+                        <img
+                            src="top.img"
+                            class="product-image"
+                            alt="Top Contour"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h5>Top Contour</h5>
+
+                        <p>Top deportivo de soporte medio</p>
+
+                        <div class="product-price">$980 MXN</div>
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart('top', 'Top Contour', 980, 'top.img')"
+                        >
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-6 col-lg-3" id="conjuntos">
+
+                <div class="product-card">
+
+                    <div class="product-image-wrap">
+
+                        <img
+                            src="conjunto.img"
+                            class="product-image"
+                            alt="Conjunto Elan"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h5>Conjunto Elan</h5>
+
+                        <p>Conjunto deportivo completo</p>
+
+                        <div class="product-price">$2,250 MXN</div>
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart('conjunto', 'Conjunto Elan', 2250, 'conjunto.img')"
+                        >
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-6 col-lg-3" id="accesorios">
+
+                <div class="product-card">
+
+                    <div class="product-image-wrap">
+
+                        <img
+                            src="chaqueta.img"
+                            class="product-image"
+                            alt="Chaqueta Softhorn"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <h5>Chaqueta Softhorn</h5>
+
+                        <p>Chaqueta ligera deportiva</p>
+
+                        <div class="product-price">$1,980 MXN</div>
+
+                        <button
+                            class="add-button"
+                            onclick="addToCart('chaqueta', 'Chaqueta Softhorn', 1980, 'chaqueta.img')"
+                        >
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FILOSOFÍA -->
+
+    <section class="section-padding editorial">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6 editorial-content">
+
+                <span>Nuestra filosofía</span>
+
+                <h2>Más que ropa, una forma de sentirte bien.</h2>
+
+                <p>
+                    Cada pieza de ALOURÉ está pensada para acompañar
+                    tu movimiento y celebrar tu esencia. Creemos en
+                    la belleza de los pequeños momentos, en la confianza
+                    y en encontrar equilibrio en cada día.
+                </p>
+
+                <a href="historia.html" class="historia-link">
+    CONOCE NUESTRA HISTORIA
+    <span>→</span>
+</a>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <img
+                    src="filosofía.img
+                    "
+                    alt="Filosofía ALOURÉ"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TESTIMONIOS -->
+
+    <section class="section-padding testimonials">
+
+        <div class="section-heading">
+
+            <span>Lo que dicen de nosotras</span>
+
+            <h2>La experiencia ALOURÉ</h2>
+
+            <p>Historias reales de mujeres que se mueven con nosotros.</p>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-6 col-md-3">
+
+                <div class="testimonial-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=85"
+                        alt="Cliente"
+                    >
+
+                    <h5>Valentina R.</h5>
+
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        Me encanta la calidad y lo cómodas que son
+                        las prendas. Definitivamente mis favoritas.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-6 col-md-3">
+
+                <div class="testimonial-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=85"
+                        alt="Cliente"
+                    >
+
+                    <h5>Camila M.</h5>
+
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        Los diseños son preciosos y se sienten
+                        increíbles al momento de entrenar.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-6 col-md-3">
+
+                <div class="testimonial-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=300&q=85"
+                        alt="Cliente"
+                    >
+
+                    <h5>Mariana L.</h5>
+
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        La tela es espectacular y los conjuntos
+                        tienen un estilo muy elegante.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-6 col-md-3">
+
+                <div class="testimonial-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=300&q=85"
+                        alt="Cliente"
+                    >
+
+                    <h5>Andrea G.</h5>
+
+                    <div class="stars">★★★★★</div>
+
+                    <p>
+                        ALOURÉ se convirtió en mi marca favorita
+                        para hacer ejercicio y sentirme bien.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter">
+
+        <h2>Un poquito de ALOURÉ en tu correo.</h2>
+
+        <p>
+            Suscríbete y descubre nuestras novedades,
+            colecciones y promociones especiales.
+        </p>
+
+        <form class="newsletter-form" id="newsletterForm">
+
+            <input
+                type="email"
+                id="newsletterEmail"
+                placeholder="Tu correo electrónico"
+                required
+            >
+
+            <button type="submit">
+                SUSCRIBIRME
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+
+                <div class="footer-logo">ALOURÉ</div>
+
+                <p class="mt-3">
+                    Activewear creado para mujeres que encuentran
+                    belleza en cada movimiento.
+                </p>
+
+            </div>
+
+            <div class="col-6 col-md-2 mb-4">
+
+                <h6>EXPLORAR</h6>
+
+                <a href="#novedades">Novedades</a>
+                <a href="#coleccion">Colección</a>
+                <a href="#leggings">Leggings</a>
+                <a href="#tops">Tops</a>
+
+            </div>
+
+            <div class="col-6 col-md-3 mb-4">
+
+                <h6>AYUDA</h6>
+
+                <a href="#footer">Envíos</a>
+                <a href="#footer">Cambios y devoluciones</a>
+                <a href="#footer">Preguntas frecuentes</a>
+                <a href="#footer">Contacto</a>
+
+            </div>
+
+            <div class="col-md-3 mb-4">
+
+                <h6>SÍGUENOS</h6>
+
+                <a href="#footer">
+                    <i class="bi bi-instagram"></i> Instagram
+                </a>
+
+                <a href="#footer">
+                    <i class="bi bi-facebook"></i> Facebook
+                </a>
+
+                <a href="#footer">
+                    <i class="bi bi-pinterest"></i> Pinterest
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>© 2026 ALOURÉ SPORTSWEAR. Todos los derechos reservados.</p>
+
+        </div>
+
+    </footer>
+
+    <!-- CARRITO LATERAL -->
+
+    <div class="cart-panel" id="cartPanel">
+
+        <div class="cart-header">
+
+            <h4>Tu bolsa</h4>
+
+            <button class="icon-button" id="cartClose" aria-label="Cerrar carrito">
+                <i class="bi bi-x-lg"></i>
+            </button>
+
+        </div>
+
+        <div class="cart-items" id="cartItems">
+
+        </div>
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>Subtotal</span>
+
+                <strong id="cartTotal">$0 MXN</strong>
+
+            </div>
+
+            <button class="checkout-button" id="checkoutButton">
+                FINALIZAR COMPRA
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- NOTIFICACIÓN -->
+
+    <div class="toast-aloure" id="toastAloure"></div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* =====================================
+           ELEMENTOS DEL DOCUMENTO
+        ===================================== */
+
+        const menuButton = document.getElementById('menuButton');
+        const menuClose = document.getElementById('menuClose');
+        const sideMenu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('overlay');
+
+        const searchButton = document.getElementById('searchButton');
+        const searchBox = document.getElementById('searchBox');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        const cartButton = document.getElementById('cartButton');
+        const cartClose = document.getElementById('cartClose');
+        const cartPanel = document.getElementById('cartPanel');
+
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+
+        const checkoutButton = document.getElementById('checkoutButton');
+
+
+        /* =====================================
+           CARRITO CON LOCAL STORAGE
+        ===================================== */
+
+        let cart = JSON.parse(localStorage.getItem('aloureCart')) || [];
+
+
+        /* =====================================
+           FUNCIONES GENERALES
+        ===================================== */
+
+        function formatPrice(price) {
+            return price.toLocaleString('es-MX', {
+                style: 'currency',
+                currency: 'MXN',
+                maximumFractionDigits: 0
+            });
+        }
+
+
+        function showToast(message) {
+
+            const toast = document.getElementById('toastAloure');
+
+            toast.textContent = message;
+
+            toast.classList.add('show');
+
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 2500);
+
+        }
+
+
+        /* =====================================
+           ABRIR Y CERRAR MENÚ
+        ===================================== */
+
+        function openMenu() {
+
+            sideMenu.classList.add('active');
+            overlay.classList.add('active');
+
+        }
+
+
+        function closeMenu() {
+
+            sideMenu.classList.remove('active');
+            overlay.classList.remove('active');
+
+        }
+
+
+        menuButton.addEventListener('click', openMenu);
+
+        menuClose.addEventListener('click', closeMenu);
+
+        overlay.addEventListener('click', function() {
+
+            closeMenu();
+            closeCart();
+
+        });
+
+
+        document.querySelectorAll('.menu-link').forEach(function(link) {
+
+            link.addEventListener('click', closeMenu);
+
+        });
+
+
+        /* =====================================
+           BUSCADOR
+        ===================================== */
+
+        searchButton.addEventListener('click', function() {
+
+            searchBox.classList.toggle('active');
+
+            if (searchBox.classList.contains('active')) {
+                searchInput.focus();
+            }
+
+        });
+
+
+        const products = [
+
+            {
+                id: 'legging',
+                name: 'Legging Gear Sculpt',
+                price: 1590,
+                image: 'legging.img'
+            },
+
+            {
+                id: 'top',
+                name: 'Top Contour',
+                price: 980,
+                image: 'top.img'
+            },
+
+            {
+                id: 'conjunto',
+                name: 'Conjunto Elan',
+                price: 2250,
+                image: 'conjunto.img'
+            },
+
+            {
+                id: 'chaqueta',
+                name: 'Chaqueta Softhorn',
+                price: 1980,
+                image: 'chaqueta.img'
+            }
+
+        ];
+
+
+        searchInput.addEventListener('input', function() {
+
+            const searchText = searchInput.value.toLowerCase().trim();
+
+            searchResults.innerHTML = '';
+
+            if (searchText === '') {
+                return;
+            }
+
+            const filteredProducts = products.filter(function(product) {
+
+                return product.name.toLowerCase().includes(searchText);
+
+            });
+
+
+            if (filteredProducts.length === 0) {
+
+                searchResults.innerHTML = `
+                    <p style="font-size:13px;color:#777;">
+                        No encontramos productos con ese nombre.
+                    </p>
+                `;
+
+                return;
+
+            }
+
+
+            filteredProducts.forEach(function(product) {
+
+                const result = document.createElement('div');
+
+                result.className = 'search-result';
+
+                result.innerHTML = `
+
+                    <img src="${product.image}" alt="${product.name}">
+
+                    <div>
+
+                        <h6>${product.name}</h6>
+
+                        <p>${formatPrice(product.price)}</p>
+
+                    </div>
+
+                `;
+
+
+                result.addEventListener('click', function() {
+
+                    addToCart(
+                        product.id,
+                        product.name,
+                        product.price,
+                        product.image
+                    );
+
+                    searchBox.classList.remove('active');
+
+                    searchInput.value = '';
+
+                    searchResults.innerHTML = '';
+
+                });
+
+
+                searchResults.appendChild(result);
+
+            });
+
+        });
+
+
+        /* =====================================
+           AGREGAR PRODUCTOS AL CARRITO
+        ===================================== */
+
+        function addToCart(id, name, price, image) {
+
+            const existingProduct = cart.find(function(product) {
+
+                return product.id === id;
+
+            });
+
+
+            if (existingProduct) {
+
+                existingProduct.quantity++;
+
+            } else {
+
+                cart.push({
+
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+
+                });
+
+            }
+
+
+            renderCart();
+
+            showToast(name + ' se agregó a tu bolsa.');
+
+        }
+
+
+        /* =====================================
+           MOSTRAR CARRITO Y GUARDAR INFORMACIÓN
+        ===================================== */
+
+        function renderCart() {
+
+            // Guardar el carrito en el navegador
+            // para conservar los productos al cambiar de página.
+
+            localStorage.setItem('aloureCart', JSON.stringify(cart));
+
+
+            cartItems.innerHTML = '';
+
+
+            let total = 0;
+
+            let totalProducts = 0;
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+
+                    <div class="empty-cart">
+
+                        <i class="bi bi-bag"></i>
+
+                        <p>Tu bolsa está vacía.</p>
+
+                        <p>Descubre nuestros favoritos.</p>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            cart.forEach(function(product) {
+
+                total += product.price * product.quantity;
+
+                totalProducts += product.quantity;
+
+
+                const item = document.createElement('div');
+
+                item.className = 'cart-item';
+
+
+                item.innerHTML = `
+
+                    <img src="${product.image}" alt="${product.name}">
+
+                    <div class="cart-item-info">
+
+                        <h6>${product.name}</h6>
+
+                        <p>${formatPrice(product.price)}</p>
+
+                        <div class="quantity-controls">
+
+                            <button onclick="changeQuantity('${product.id}', -1)">
+                                -
+                            </button>
+
+                            <span>${product.quantity}</span>
+
+                            <button onclick="changeQuantity('${product.id}', 1)">
+                                +
+                            </button>
+
+                        </div>
+
+                        <button
+                            class="remove-item"
+                            onclick="removeFromCart('${product.id}')"
+                        >
+                            Eliminar
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                cartItems.appendChild(item);
+
+            });
+
+
+            cartTotal.textContent = formatPrice(total);
+
+            cartCount.textContent = totalProducts;
+
+        }
+
+
+        /* =====================================
+           CAMBIAR CANTIDAD
+        ===================================== */
+
+        function changeQuantity(id, amount) {
+
+            const product = cart.find(function(item) {
+
+                return item.id === id;
+
+            });
+
+
+            if (!product) {
+                return;
+            }
+
+
+            product.quantity += amount;
+
+
+            if (product.quantity <= 0) {
+
+                cart = cart.filter(function(item) {
+
+                    return item.id !== id;
+
+                });
+
+                showToast('Producto eliminado de tu bolsa.');
+
+            }
+
+
+            renderCart();
+
+        }
+
+
+        /* =====================================
+           ELIMINAR PRODUCTOS
+        ===================================== */
+
+        function removeFromCart(id) {
+
+            cart = cart.filter(function(product) {
+
+                return product.id !== id;
+
+            });
+
+
+            renderCart();
+
+            showToast('Producto eliminado de tu bolsa.');
+
+        }
+
+
+        /* =====================================
+           ABRIR Y CERRAR CARRITO
+        ===================================== */
+
+        function openCart() {
+
+            cartPanel.classList.add('active');
+
+            overlay.classList.add('active');
+
+        }
+
+
+        function closeCart() {
+
+            cartPanel.classList.remove('active');
+
+            overlay.classList.remove('active');
+
+        }
+
+
+        cartButton.addEventListener('click', function() {
+
+            renderCart();
+
+            openCart();
+
+        });
+
+
+        cartClose.addEventListener('click', closeCart);
+
+
+        /* =====================================
+           FINALIZAR COMPRA
+        ===================================== */
+
+        checkoutButton.addEventListener('click', function() {
+
+            if (cart.length === 0) {
+
+                showToast('Tu bolsa está vacía.');
+
+                return;
+
+            }
+
+
+            // Guardar los productos antes de salir
+            localStorage.setItem('aloureCart', JSON.stringify(cart));
+
+
+            // Redirigir a la página de pago
+            window.location.href = 'pago.html';
+
+        });
+
+
+        /* =====================================
+           NEWSLETTER
+        ===================================== */
+
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+            const email = document.getElementById('newsletterEmail').value;
+
+            if (email) {
+
+                showToast('¡Gracias por suscribirte a ALOURÉ!');
+
+                this.reset();
+
+            }
+
+        });
+
+
+        /* =====================================
+           INICIAR PÁGINA
+        ===================================== */
+
+        renderCart();
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
